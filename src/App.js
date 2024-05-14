@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useState } from 'react';
+import Comments from './Components/Comments';
+import MainPage from './Components/MainPage';
 function App() {
+  const [selectedUser, setSelectedUser] = useState('Jain Smith');
+
+  const handleUserChange = (user) => {
+    setSelectedUser(user);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+          <MainPage onUserChange={handleUserChange}/>
+        </div>
+
+        <div>
+            <Comments selectedUser={selectedUser} />
+        </div>
+    </>
   );
 }
 
